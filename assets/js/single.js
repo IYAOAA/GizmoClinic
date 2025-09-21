@@ -1,6 +1,6 @@
 // --- SET YOUR SUPABASE CREDENTIALS ---
 const supabaseUrl = 'https://sqgnjqgsxeamvyciyezb.supabase.co';
-const supabaseKey = 'sb_secret_KDaURoOKuCSSweJim3PIsQ_FbxGjTHA';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZ25qcWdzeGVhbXZ5Y2l5ZXpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg0NjQzNDAsImV4cCI6MjA3NDA0MDM0MH0.tUh66OFhvvhH48jaC9eyETTtUHKZd1NCr-7_EahERhQ';
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 function getQueryParam(name) {
