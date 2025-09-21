@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GizmoClinic Blog</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">GizmoClinic</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Latest Posts</h1>
+    <input type="text" id="searchBox" placeholder="Search posts…" class="search-box">
+    <div id="postGrid" class="post-grid"></div>
+    <button id="loadMoreBtn" class="load-more">Load More</button>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 GizmoClinic</p>
+  </footer>
+
+  <!-- Supabase client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.6.0/dist/supabase.min.js"></script>
+  <!-- Main JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
