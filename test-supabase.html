@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supabase Test</title>
+</head>
+<body>
+  <h1>Supabase Connection Test</h1>
+  <div id="output">Loading…</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.6.0/dist/supabase.min.js"></script>
+  <script>
+    // Replace with your own credentials
+    const supabaseUrl = 'https://sqgnjqgsxeamvyciyezb.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZ25qcWdzeGVhbXZ5Y2l5ZXpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg0NjQzNDAsImV4cCI6MjA3NDA0MDM0MH0.tUh66OFhvvhH48jaC9eyETTtUHKZd1NCr-7_EahERhQ';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    async function test() {
+      const { data, error } = await supabase
+        .from('posts')
+        .select('*')
+        .order('date', { ascending: false });
+
+      const output = document.getElementById('output');
+
+      if (error) {
+        output.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+        console.error(error);
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        output.innerHTML = '<p>No posts found in Supabase.</p>';
+        return;
+      }
+
+      // Show raw JSON of your posts
+      output.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+    }
+
+    test();
+  </script>
+</body>
+</html>
