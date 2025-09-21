@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= post.title %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a href="/">← Back</a>
+  <h1><%= post.title %></h1>
+  <small><%= post.date.toDateString() %></small>
+  <div><%- post.content %></div>
+  <p>Tags: 
+    <% post.tags.forEach(tag => { %>
+      <span class="tag"><%= tag %></span>
+    <% }) %>
+  </p>
+</body>
+</html>
