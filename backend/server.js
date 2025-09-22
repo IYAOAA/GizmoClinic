@@ -1,53 +1,14 @@
-import express from "express";
-import fs from "fs";
-import path from "path";
-import bodyParser from "body-parser";
+const express = require('express');
+const cors = require('cors');
+const posts = require('./posts.json');
 
 const app = express();
-const __dirname = path.resolve();
-const postsFile = path.join(__dirname, "data", "posts.json");
+app.use(cors());
 
-// middleware
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
-
-// get all posts
-app.get("/api/posts", (req, res) => {
-  fs.readFile(postsFile, "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Could not read posts" });
-    res.json(JSON.parse(data));
-  });
+// GET posts
+app.get('/posts', (req, res) => {
+  res.json(posts);
 });
 
-// add new post
-app.post("/api/posts", (req, res) => {
-  const { title, content, image } = req.body;
-  if (!title || !content) return res.status(400).json({ error: "Title & content required" });
-
-  fs.readFile(postsFile, "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Could not read posts" });
-    let posts = JSON.parse(data);
-    const slug = title.toLowerCase().replace(/ /g, "-");
-    const newPost = {
-      id: Date.now(),
-      title,
-      content,
-      image: image || "",
-      slug,
-      date: new Date().toISOString()
-    };
-    posts.unshift(newPost);
-    fs.writeFile(postsFile, JSON.stringify(posts, null, 2), err => {
-      if (err) return res.status(500).json({ error: "Could not save post" });
-      res.json(newPost);
-    });
-  });
-});
-
-// single post page
-app.get("/post/:slug", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "post.html"));
-});
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log("Server running on port", port));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
