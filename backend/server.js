@@ -1,48 +1,53 @@
-// server.js
-const express = require('express');
-const cors = require('cors');
+import express from "express";
+import fs from "fs";
+import path from "path";
+import bodyParser from "body-parser";
+
 const app = express();
+const __dirname = path.resolve();
+const postsFile = path.join(__dirname, "data", "posts.json");
 
-app.use(cors()); // allow frontend to call API
+// middleware
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "public")));
 
-// Temporary demo posts
-const posts = [
-  {
-    id: 1,
-    title: 'How to Stop Windows Auto Update in 2 Minutes',
-    excerpt: 'Quick steps to stop Windows from updating automatically.',
-    content: `<p>Windows updates can interrupt your work. Here’s how to pause or stop them in two minutes:</p>
-              <ol>
-                <li>Press <strong>Win + R</strong>, type <code>services.msc</code> and hit Enter.</li>
-                <li>Find “Windows Update” in the list, double-click it.</li>
-                <li>Change “Startup type” to <strong>Disabled</strong> and click <strong>Stop</strong>.</li>
-                <li>Click <strong>Apply</strong> then <strong>OK</strong>.</li>
-              </ol>
-              <p>Done — no more surprise updates.</p>`,
-    image: 'https://via.placeholder.com/600x300.png?text=Windows+Update+Fix',
-    date: new Date().toISOString()
-  },
-  {
-    id: 2,
-    title: 'Speed Up Your Old Laptop in 5 Easy Steps',
-    excerpt: 'Five quick changes that give old laptops a new life.',
-    content: '<p>Full tutorial here...</p>',
-    image: 'https://via.placeholder.com/600x300.png?text=Laptop+Speed',
-    date: new Date().toISOString()
-  }
-];
-
-// List posts
-app.get('/posts', (req, res) => {
-  res.json(posts);
+// get all posts
+app.get("/api/posts", (req, res) => {
+  fs.readFile(postsFile, "utf8", (err, data) => {
+    if (err) return res.status(500).json({ error: "Could not read posts" });
+    res.json(JSON.parse(data));
+  });
 });
 
-// Single post
-app.get('/posts/:id', (req, res) => {
-  const post = posts.find(p => p.id === parseInt(req.params.id));
-  if (!post) return res.status(404).json({ error: 'Post not found' });
-  res.json(post);
+// add new post
+app.post("/api/posts", (req, res) => {
+  const { title, content, image } = req.body;
+  if (!title || !content) return res.status(400).json({ error: "Title & content required" });
+
+  fs.readFile(postsFile, "utf8", (err, data) => {
+    if (err) return res.status(500).json({ error: "Could not read posts" });
+    let posts = JSON.parse(data);
+    const slug = title.toLowerCase().replace(/ /g, "-");
+    const newPost = {
+      id: Date.now(),
+      title,
+      content,
+      image: image || "",
+      slug,
+      date: new Date().toISOString()
+    };
+    posts.unshift(newPost);
+    fs.writeFile(postsFile, JSON.stringify(posts, null, 2), err => {
+      if (err) return res.status(500).json({ error: "Could not save post" });
+      res.json(newPost);
+    });
+  });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
+// single post page
+app.get("/post/:slug", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "post.html"));
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log("Server running on port", port));
