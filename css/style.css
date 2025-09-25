@@ -96,3 +96,76 @@ footer {
 .post-tags a:hover {
   text-decoration: underline;
 }
+.layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.content {
+  /* main content area */
+}
+
+.sidebar {
+  background: var(--content-bg);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.sidebar h3 {
+  margin-top: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.sidebar li {
+  margin-bottom: 8px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.sidebar form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.sidebar button {
+  padding: 8px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background: #333; /* or a darker shade of your primary color */
+}
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    margin-top: 20px;
+  }
+}
