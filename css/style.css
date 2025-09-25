@@ -22,6 +22,25 @@ nav a {
   --text: #333333;
   --muted: #777777;
 }
+.logo a {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--primary);
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 15px;
+  border: 3px solid var(--primary);
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.logo a:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: scale(1.05);
+}
 
 body {
   background: var(--background);
