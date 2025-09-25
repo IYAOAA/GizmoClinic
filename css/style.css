@@ -78,3 +78,51 @@ footer {
   font-size: 0.9em;
   padding-top: 10px;
 }
+:root {
+  --primary: #0077cc;
+  --primary-dark: #005fa3;
+  --background: #f8f9fa;
+  --content-bg: #ffffff;
+  --heading: #222222;
+  --text: #333333;
+  --muted: #777777;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+}
+
+h1, h2, h3 {
+  color: var(--heading);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover {
+  color: #fff;
+  background: var(--primary-dark);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+header h1 a {
+  color: var(--heading);
+  text-decoration: none;
+}
+
+article {
+  background: var(--content-bg);
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+footer {
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.9em;
+  padding: 10px 0;
+}
