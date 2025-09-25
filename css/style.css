@@ -80,3 +80,19 @@ footer {
   font-size: 0.9em;
   padding: 10px 0;
 }
+.post-tags {
+  font-size: 0.85em;
+  color: var(--muted);
+  background: #eef2f6;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.post-tags a {
+  color: var(--primary);
+  text-decoration: none;
+}
+.post-tags a:hover {
+  text-decoration: underline;
+}
