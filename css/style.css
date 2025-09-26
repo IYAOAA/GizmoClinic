@@ -1,27 +1,33 @@
-body {
-  font-family: Arial, sans-serif;
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
-  line-height: 1.6;
-}
-header, nav {
-  text-align: center;
-  margin-bottom: 20px;
-}
-nav a {
-  margin: 0 10px;
-  text-decoration: none;
-}
 :root {
   --primary: #012c4b;
-  --primary-dark: #023558e5;
+  --primary-dark: rgba(2,53,88,0.9); /* was #023558e5 */
   --background: #f8f9fa;
   --content-bg: #ffffff;
   --heading: #222222;
   --text: #333333;
   --muted: #777777;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  line-height: 1.6;
+  background: var(--background);
+  color: var(--text);
+}
+
+header, nav {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+}
+
 .logo a {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   font-size: 2rem;
@@ -42,11 +48,6 @@ nav a {
   transform: scale(1.05);
 }
 
-body {
-  background: var(--background);
-  color: var(--text);
-}
-
 h1, h2, h3 {
   color: var(--heading);
 }
@@ -55,6 +56,7 @@ a {
   color: var(--primary);
   text-decoration: none;
 }
+
 a:hover {
   color: #fff;
   background: var(--primary-dark);
@@ -80,6 +82,8 @@ footer {
   font-size: 0.9em;
   padding: 10px 0;
 }
+
+/* Tags */
 .post-tags {
   font-size: 0.85em;
   color: var(--muted);
@@ -89,22 +93,22 @@ footer {
   display: inline-block;
   margin-bottom: 10px;
 }
+
 .post-tags a {
   color: var(--primary);
   text-decoration: none;
 }
+
 .post-tags a:hover {
   text-decoration: underline;
 }
+
+/* Layout */
 .layout {
   display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 30px;
   margin-top: 20px;
-}
-
-.content {
-  /* main content area */
 }
 
 .sidebar {
@@ -159,8 +163,10 @@ footer {
 }
 
 .sidebar button:hover {
-  background: #333; /* or a darker shade of your primary color */
+  background: #333;
 }
+
+/* Responsive */
 @media (max-width: 768px) {
   .layout {
     grid-template-columns: 1fr;
@@ -169,8 +175,10 @@ footer {
     margin-top: 20px;
   }
 }
+
+/* About section */
 .about-me {
-  background: #f8f9fb; /* or var(--content-bg) */
+  background: #f8f9fb;
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 8px;
@@ -189,6 +197,7 @@ footer {
   object-fit: cover;
   margin-bottom: 10px;
 }
+
 .about-page {
   max-width: 800px;
   margin: 40px auto;
@@ -206,7 +215,7 @@ footer {
 
 .about-page .btn {
   display: inline-block;
-  background: #0073e6;  /* pick your main accent color */
+  background: #0073e6;
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
@@ -218,6 +227,8 @@ footer {
 .about-page .btn:hover {
   background: #005bb5;
 }
+
+/* Contact section */
 .contact-page {
   max-width: 700px;
   margin: 40px auto;
@@ -250,7 +261,7 @@ footer {
 }
 
 .contact-form button {
-  background-color: #0073e6;  /* your accent color */
+  background-color: #0073e6;
   color: #fff;
   padding: 12px;
   border: none;
@@ -263,9 +274,11 @@ footer {
 .contact-form button:hover {
   background-color: #005bb5;
 }
+
+/* Popup */
 .popup {
-  opacity: 0;                 /* start hidden */
-  pointer-events: none;        /* no clicks when hidden */
+  opacity: 0;
+  pointer-events: none;
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
@@ -274,12 +287,12 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.5s ease; /* fade in/out */
+  transition: opacity 0.5s ease;
 }
 
 .popup.show {
   opacity: 1;
-  pointer-events: auto;        /* clickable now */
+  pointer-events: auto;
 }
 
 .popup-content {
