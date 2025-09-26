@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Stop Windows Update in 2 Minutes – GIZMOCLINIC</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+  <h1 class="logo"><a href="../index.html">GIZMOCLINIC</a></h1>
+  <nav>
+    <a href="../index.html">Home</a> |
+    <a href="../about.html">About</a> |
+    <a href="../contact.html">Contact</a> |
+    <a href="../archive.html">Archive</a>
+  </nav>
+  <hr>
+</header>
+
+<main class="post-page">
+  <article class="post">
+    <h2>How to Stop Windows Update in 2 Minutes (3 Easy Ways)</h2>
+    <p class="post-meta">Posted on September 25, 2025 • by Ibrahim</p>
+
+    <img src="../images/windows update.png" alt="Windows Update" class="post-image">
+
+    <p>
+      Windows Updates are meant to improve your PC, but sometimes they pop up at the worst moments, eat bandwidth, or break something that was working. Below are three proven ways to stop them — from the quick temporary pause to a deeper, more permanent block.
+    </p>
+
+    <h3>1. Temporarily Pause Updates (Fastest and Built-In)</h3>
+    <p>This is Microsoft’s own pause switch. It buys you a few days or weeks but Windows will eventually re-enable updates. Good for short breaks.</p>
+
+    <p><strong>Steps:</strong></p>
+    <ul>
+      <li>Press Windows Key + I to open Settings.</li>
+      <li>Click Windows Update (bottom left).</li>
+      <li>On the right, click Pause updates and choose how long (up to 5 weeks).</li>
+      <li>Done — Windows Update won’t run until your chosen date expires.</li>
+    </ul>
+    <p><strong>Pros:</strong> Quick, safe, reversible. <br>
+       <strong>Cons:</strong> Microsoft overrides it after the set time.</p>
+
+    <h3>2. Disable the Windows Update Service (Semi-Permanent)</h3>
+    <p>Turning off the actual service behind updates stops them cold until you turn it back on.</p>
+
+    <p><strong>Steps:</strong></p>
+    <ul>
+      <li>Press Windows Key + R, type <code>services.msc</code>, and hit Enter.</li>
+      <li>In the Services list, scroll down to Windows Update.</li>
+      <li>Double-click it. In the Startup type dropdown, select Disabled.</li>
+      <li>Click Stop under Service status, then Apply and OK.</li>
+      <li>Restart your PC.</li>
+    </ul>
+    <p><strong>Pros:</strong> Works until you manually re-enable the service. <br>
+       <strong>Cons:</strong> Major version upgrades or future updates may silently switch it back on.</p>
+
+    <h3>3. Use Group Policy or Registry (More Permanent)</h3>
+    <p>This method essentially tells Windows “never check.” It’s harder for Microsoft to reverse, but still can be undone by big system upgrades.</p>
+
+    <h4>Group Policy (Windows 10/11 Pro):</h4>
+    <ul>
+      <li>Press Windows Key + R, type <code>gpedit.msc</code> and hit Enter.</li>
+      <li>Go to: Computer Configuration → Administrative Templates → Windows Components → Windows Update → Manage end user experience.</li>
+      <li>Double-click Configure Automatic Updates.</li>
+      <li>Select Disabled, click Apply and OK.</li>
+      <li>Restart your PC.</li>
+    </ul>
+
+    <h4>Registry (Windows Home):</h4>
+    <ul>
+      <li>Press Windows Key + R, type <code>regedit</code> and hit Enter.</li>
+      <li>Navigate to: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU (Create keys if they don’t exist.)</li>
+      <li>Right-click, choose New → DWORD (32-bit) Value. Name it <code>NoAutoUpdate</code>.</li>
+      <li>Double-click it and set Value data to 1.</li>
+      <li>Restart your PC.</li>
+    </ul>
+    <p><strong>Pros:</strong> Strongest block; survives most reboots. <br>
+       <strong>Cons:</strong> May break Windows Update UI; big version upgrades can still reset settings.</p>
+
+    <h3>Final Thoughts</h3>
+    <p>No method is truly 100% permanent because Microsoft can push updates with major builds. But these three options give you control — quick pause, semi-permanent service disable, or deeper Group Policy/Registry tweak. Always remember to re-enable updates periodically for security patches once you’re done.</p>
+
+    <p><a href="../index.html">← Back to Home</a></p>
+  </article>
+</main>
+
+<footer>
+  <p>&copy; 2025 GIZMOCLINIC — All rights reserved.</p>
+</footer>
+
+</body>
+</html>
