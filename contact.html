@@ -3,44 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact</title>
+  <title>Contact – GIZMOCLINIC</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1><a href="index.html">GIZMOCLINIC</a></h1>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="about.html">About</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
-    <hr>
-  </header>
 
-  <main>
-    <h2>Contact Me</h2>
-    <p>If you’d like to get in touch, fill out the form below or send an email to <strong>youremail@example.com</strong>.</p>
-
-    <form action="https://formspree.io/f/yourformid" method="POST">
-      <label>Your Name<br>
-        <input type="text" name="name" required>
-      </label><br><br>
-
-      <label>Your Email<br>
-        <input type="email" name="email" required>
-      </label><br><br>
-
-      <label>Message<br>
-        <textarea name="message" rows="5" required></textarea>
-      </label><br><br>
-
-      <button type="submit">Send</button>
-    </form>
-  </main>
-
+<header>
+  <h1 class="logo"><a href="index.html">GIZMOCLINIC</a></h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="contact.html" class="active">Contact</a> |
+    <a href="archive.html">Archive</a>
+  </nav>
   <hr>
-  <footer>
-    <p>&copy; 2025 GIZMOCLINIC — All rights reserved.</p>
-  </footer>
+</header>
+
+<main class="contact-page">
+  <section class="contact-content">
+    <h2>Contact Me</h2>
+    <p>Got a question, tip, or feedback about the blog?  
+       Fill out the form below and I’ll get back to you.</p>
+
+    <form name="contact" method="POST" data-netlify="true" class="contact-form">
+  <input type="hidden" name="form-name" value="contact">
+
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="5" required></textarea>
+
+  <button type="submit">Send Message</button>
+</form>
+<div id="thankyou-popup" class="popup">
+  <div class="popup-content">
+    <p>Thanks for your message! We’ll be in touch soon.</p>
+    <button id="popup-ok">OK</button>
+  </div>
+</div>
+
+  </section>
+</main>
+
+<footer>
+  <hr>
+  <p>&copy; 2025 GIZMOCLINIC — All rights reserved.</p>
+</footer>
+<script>
+const form = document.querySelector('.contact-form');
+const popup = document.getElementById('thankyou-popup');
+const okBtn = document.getElementById('popup-ok');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(new FormData(form)).toString()
+  })
+  .then(() => {
+    popup.classList.add('show'); // fade in
+    // auto close after 5 seconds
+    setTimeout(() => {
+      popup.classList.remove('show'); // fade out
+      form.reset();
+    }, 5000);
+  })
+  .catch((error) => alert(error));
+});
+
+okBtn.addEventListener('click', function() {
+  popup.classList.remove('show'); // fade out instantly
+});
+</script>
 </body>
 </html>

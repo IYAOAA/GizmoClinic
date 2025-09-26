@@ -189,3 +189,125 @@ footer {
   object-fit: cover;
   margin-bottom: 10px;
 }
+.about-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 15px;
+  text-align: center;
+}
+
+.about-photo-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 20px 0;
+}
+
+.about-page .btn {
+  display: inline-block;
+  background: #0073e6;  /* pick your main accent color */
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+
+.about-page .btn:hover {
+  background: #005bb5;
+}
+.contact-page {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+
+.contact-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form label {
+  font-weight: bold;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.contact-form button {
+  background-color: #0073e6;  /* your accent color */
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #005bb5;
+}
+.popup {
+  opacity: 0;                 /* start hidden */
+  pointer-events: none;        /* no clicks when hidden */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease; /* fade in/out */
+}
+
+.popup.show {
+  opacity: 1;
+  pointer-events: auto;        /* clickable now */
+}
+
+.popup-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  margin: auto;
+  transform: translateY(-20px);
+  transition: transform 0.5s ease;
+}
+
+.popup.show .popup-content {
+  transform: translateY(0);
+}
+
+.popup-content button {
+  margin-top: 15px;
+  background: #0073e6;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.popup-content button:hover {
+  background: #005bb5;
+}
