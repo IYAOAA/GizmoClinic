@@ -350,9 +350,8 @@ footer {
 }
 /* Hero Section */
 .hero {
-  /* watermark background */
-  background: 
-    linear-gradient(rgba(1,44,75,0.85), rgba(2,53,88,0.85)), 
+  background:
+    linear-gradient(rgba(1,44,75,0.85), rgba(2,53,88,0.85)),
     url('images/watermark.jpg') center/cover no-repeat;
   color: #fff;
   text-align: center;
