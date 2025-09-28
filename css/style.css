@@ -350,7 +350,10 @@ footer {
 }
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  /* watermark background */
+  background: 
+    linear-gradient(rgba(1,44,75,0.85), rgba(2,53,88,0.85)), 
+    url('images/watermark.jpg') center/cover no-repeat;
   color: #fff;
   text-align: center;
   padding: 60px 20px;
@@ -367,5 +370,21 @@ footer {
 .hero p {
   font-size: 1.2rem;
   opacity: 0.9;
-  margin: 0;
+  margin: 0 0 20px;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #fff;
+  color: var(--primary);
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: var(--primary-dark);
+  color: #fff;
 }
