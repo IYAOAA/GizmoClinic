@@ -387,3 +387,86 @@ footer {
   background: var(--primary-dark);
   color: #fff;
 }
+/* Search Bar Styles */
+.search-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search-container input {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+/* Theme Toggle Button */
+.theme-toggle {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.theme-toggle button {
+  padding: 8px 15px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle button:hover {
+  background: #333;
+}
+
+/* Dark Theme Variables */
+body.dark {
+  --background: #1e1e1e;
+  --content-bg: #2a2a2a;
+  --heading: #ffffff;
+  --text: #dddddd;
+  --muted: #aaaaaa;
+  --primary: #0073e6;
+  --primary-dark: rgba(0,115,230,0.8);
+}
+
+body.dark a:hover {
+  color: #000;
+  background: #fff;
+}
+/* Search Box Styles */
+.search-box {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  background: var(--content-bg);
+  color: var(--text);
+}
+
+.search-box button {
+  padding: 8px 15px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-box button:hover {
+  background: #333;
+}
+
+/* Dark mode for search box (inherits variables automatically) */
+body.dark .search-box input {
+  border: 1px solid #555;
+}
