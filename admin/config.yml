@@ -6,7 +6,7 @@ media_folder: "images" # where uploaded images go
 public_folder: "/images"
 
 collections:
-  - name: "posts"
+  - name: "latest-post"
     label: "Blog Posts"
     folder: "posts"
     create: true
