@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  repo: IYAOAA/GizmoClinic
   branch: main   # or master depending on your repo name
 
 media_folder: "images" # where uploaded images go
