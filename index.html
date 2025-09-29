@@ -221,16 +221,5 @@ scrollTopBtn.addEventListener("click", function() {
     toggleBtn.textContent = theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
   });
 </script>
-2. Add a small script to all other pages
-(about.html, contact.html, post1.html, etc.) → put this before </body>
-
-html
-Copy code
-<script>
-  // Auto-apply theme based on last saved choice
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
-  }
-</script>
 </body>
 </html>
