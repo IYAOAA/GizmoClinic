@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
-  branch: main   # change if your repo branch differs
+  name: github
+  repo: IYAOAA/GizmoClinic
+  branch: main
+
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
