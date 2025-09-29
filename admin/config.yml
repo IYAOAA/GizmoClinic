@@ -1,4 +1,5 @@
 backend:
+  name: github
   repo: IYAOAA/GizmoClinic
   branch: main   # or master depending on your repo name
 
