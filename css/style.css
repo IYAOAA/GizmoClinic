@@ -493,14 +493,3 @@ body.dark .search-box input {
   background-color: var(--primary-dark);
 }
 
-/* Default light mode */
-body {
-  background: #ffffff;
-  color: #000000;
-}
-
-/* Dark mode */
-body.dark-mode {
-  background: #121212;
-  color: #ffffff;
-}
