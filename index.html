@@ -18,7 +18,7 @@
 </div>
 <!-- Light/Dark Mode Toggle -->
 <div class="theme-toggle">
-  <button id="themeBtn">🌙 Dark Mode</button>
+  <button id="theme-toggle">🌙 Dark Mode</button>
 </div>
  <nav>
     <a href="index.html">Home</a> |
@@ -202,6 +202,35 @@ function scrollFunction() {
 scrollTopBtn.addEventListener("click", function() {
   window.scrollTo({top: 0, behavior: 'smooth'});
 });
+</script>
+
+<script>
+  const toggleBtn = document.getElementById("theme-toggle");
+  const currentTheme = localStorage.getItem("theme");
+
+  // Apply saved theme when homepage loads
+  if (currentTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️ Light Mode";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    let theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+    localStorage.setItem("theme", theme);
+    toggleBtn.textContent = theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
+  });
+</script>
+2. Add a small script to all other pages
+(about.html, contact.html, post1.html, etc.) → put this before </body>
+
+html
+Copy code
+<script>
+  // Auto-apply theme based on last saved choice
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
 </script>
 </body>
 </html>
