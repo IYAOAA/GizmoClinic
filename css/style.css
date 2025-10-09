@@ -546,3 +546,54 @@ body.dark .search-box input {
   border-radius: 6px;
   cursor: pointer;
 }
+.comments {
+  margin-top: 40px;
+  padding: 20px;
+  background: #fffbe6;
+  border-radius: 10px;
+}
+
+.comments h3, .comments h4 {
+  margin-bottom: 10px;
+}
+
+.comments form input,
+.comments form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.comments button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.comment-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.replies {
+  margin-left: 20px;
+  background: #f7f7f7;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.reply-btn {
+  margin-left: 10px;
+  font-size: 12px;
+  color: #0077cc;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
