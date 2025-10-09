@@ -108,5 +108,39 @@
 </footer>
 <script src="js/theme.js"></script>
 
+// Display comments + replies
+function displayComments() {
+  commentsList.innerHTML = '';
+
+  comments.forEach(comment => {
+    const li = document.createElement('li');
+    li.classList.add('comment-item');
+    li.innerHTML = `
+      <strong>${comment.name}</strong>: ${comment.message}
+      <button class="reply-btn" data-id="${comment.id}">Reply</button>
+      <ul class="replies">
+        ${comment.replies.map(r => `<li><em>${r.name}</em>: ${r.message}</li>`).join('')}
+      </ul>
+    `;
+    commentsList.appendChild(li);
+  });
+
+  // Reply buttons
+  document.querySelectorAll('.reply-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = e.target.getAttribute('data-id');
+      const replyName = prompt("Your name:");
+      const replyText = prompt("Your reply:");
+
+      if (replyName && replyText) {
+        const comment = comments.find(c => c.id == id);
+        comment.replies.push({ name: replyName, message: replyText });
+        localStorage.setItem('comments', JSON.stringify(comments));
+        displayComments();
+      }
+    });
+  });
+}
+</script>
 </body>
 </html>
