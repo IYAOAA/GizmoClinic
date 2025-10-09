@@ -158,6 +158,14 @@
   </section>
 
   <!-- sidebar -->
+   <!-- Popular Posts Widget -->
+<aside class="sidebar-widget">
+  <h3>🔥 Popular Posts</h3>
+  <ul id="popular-posts">
+    <li>Loading popular posts...</li>
+  </ul>
+</aside>
+
   <aside class="sidebar">
     <h3>Categories</h3>
     <ul class="category-list">
@@ -253,5 +261,31 @@ scrollTopBtn.addEventListener("click", function() {
   window.scrollTo({top: 0, behavior: 'smooth'});
 });
 </script>
+
+<script>
+// ======= Popular Posts (Static/Fake Data for Now) =======
+
+// Example blog posts (will later be replaced with real analytics)
+const blogPosts = [
+  { title: "How to Fix Wi-Fi Not Connecting on Windows", views: 984, url: "wifi-fix.html" },
+  { title: "Speed Up Windows 11 Without Software", views: 876, url: "speed-up-windows11.html" },
+  { title: "Recover Deleted Files on PC", views: 764, url: "recover-deleted-files.html" },
+  { title: "Clear Cache & Cookies on Browsers", views: 532, url: "clear-cache.html" },
+  { title: "Reset a Forgotten Gmail Password", views: 409, url: "reset-gmail.html" }
+];
+
+// Sort and show top 3
+const popularPosts = blogPosts.sort((a, b) => b.views - a.views).slice(0, 3);
+
+const list = document.getElementById('popular-posts');
+list.innerHTML = '';
+
+popularPosts.forEach(post => {
+  const li = document.createElement('li');
+  li.innerHTML = `<a href="${post.url}">${post.title}</a> <span class="views">(${post.views} views)</span>`;
+  list.appendChild(li);
+});
+</script>
+
 </body>
 </html>
