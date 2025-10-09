@@ -119,6 +119,67 @@
 </footer>
 <script src="js/theme.js"></script>
 
+<!-- Comment Section -->
+<section class="comments">
+  <h3>Leave a Comment</h3>
+  <form name="comment" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="comment">
+    <p hidden>
+      <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+    </p>
+    <p>
+      <label>Name: <input type="text" name="name" required></label>
+    </p>
+    <p>
+      <label>Comment: <textarea name="message" required></textarea></label>
+    </p>
+    <p>
+      <button type="submit">Submit Comment</button>
+    </p>
+  </form>
+
+  <!-- Display Comments -->
+  <div id="comment-list">
+    <h4>Visitor Comments</h4>
+    <ul id="comments"></ul>
+  </div>
+</section>
+
+<script>
+// ===== Comment System (Local Display + Netlify Save) =====
+const form = document.querySelector('form[name="comment"]');
+const commentsList = document.getElementById('comments');
+
+let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+// Load comments on page load
+window.addEventListener('DOMContentLoaded', () => {
+  displayComments();
+});
+
+// Handle new comment submission
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = form.querySelector('input[name="name"]').value;
+  const message = form.querySelector('textarea[name="message"]').value;
+
+  const newComment = {
+    id: Date.now(),
+    name,
+    message,
+    replies: []
+  };
+
+  comments.push(newComment);
+  localStorage.setItem('comments', JSON.stringify(comments));
+
+  displayComments();
+
+  form.reset();
+  alert("Comment submitted successfully!");
+});
+
 // Display comments + replies
 function displayComments() {
   commentsList.innerHTML = '';
@@ -153,5 +214,6 @@ function displayComments() {
   });
 }
 </script>
+
 </body>
 </html>
