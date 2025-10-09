@@ -128,74 +128,69 @@
 </section>
 
 <script>
-// ===== Comment System (Local Display + Netlify Save) =====
-const form = document.querySelector('form[name="comment"]');
-const commentsList = document.getElementById('comments');
+// =========================
+// Independent Comments per Post
+// =========================
 
-let comments = JSON.parse(localStorage.getItem('comments')) || [];
+// Get current page name (e.g., "post1.html")
+const postID = window.location.pathname.split("/").pop() || "homepage";
 
-// Load comments on page load
-window.addEventListener('DOMContentLoaded', () => {
-  displayComments();
-});
+// Define a unique storage key per post
+const storageKey = `comments_${postID}`;
 
-// Handle new comment submission
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+// Load comments from localStorage
+const comments = JSON.parse(localStorage.getItem(storageKey)) || [];
 
-  const name = form.querySelector('input[name="name"]').value;
-  const message = form.querySelector('textarea[name="message"]').value;
+// Select comment elements
+const commentList = document.getElementById("commentList");
+const commentForm = document.getElementById("commentForm");
 
-  const newComment = {
-    id: Date.now(),
-    name,
-    message,
-    replies: []
-  };
-
-  comments.push(newComment);
-  localStorage.setItem('comments', JSON.stringify(comments));
-
-  displayComments();
-
-  form.reset();
-  alert("Comment submitted successfully!");
-});
-
-// Display comments + replies
+// Display existing comments
 function displayComments() {
-  commentsList.innerHTML = '';
-
-  comments.forEach(comment => {
-    const li = document.createElement('li');
-    li.classList.add('comment-item');
+  commentList.innerHTML = "";
+  comments.forEach((comment, index) => {
+    const li = document.createElement("li");
+    li.classList.add("comment-item");
     li.innerHTML = `
-      <strong>${comment.name}</strong>: ${comment.message}
-      <button class="reply-btn" data-id="${comment.id}">Reply</button>
-      <ul class="replies">
-        ${comment.replies.map(r => `<li><em>${r.name}</em>: ${r.message}</li>`).join('')}
+      <p><strong>${comment.name}</strong>: ${comment.text}</p>
+      <button class="reply-btn" onclick="replyToComment(${index})">Reply</button>
+      <ul class="reply-list">
+        ${(comment.replies || []).map(reply => `<li><strong>${reply.name}</strong>: ${reply.text}</li>`).join("")}
       </ul>
     `;
-    commentsList.appendChild(li);
-  });
-
-  // Reply buttons
-  document.querySelectorAll('.reply-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const id = e.target.getAttribute('data-id');
-      const replyName = prompt("Your name:");
-      const replyText = prompt("Your reply:");
-
-      if (replyName && replyText) {
-        const comment = comments.find(c => c.id == id);
-        comment.replies.push({ name: replyName, message: replyText });
-        localStorage.setItem('comments', JSON.stringify(comments));
-        displayComments();
-      }
-    });
+    commentList.appendChild(li);
   });
 }
+
+// Handle new comment submission
+commentForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const name = document.getElementById("commentName").value.trim();
+  const text = document.getElementById("commentText").value.trim();
+  if (name && text) {
+    comments.push({ name, text, replies: [] });
+    localStorage.setItem(storageKey, JSON.stringify(comments));
+    displayComments();
+    commentForm.reset();
+  }
+});
+
+// Handle reply button click
+function replyToComment(index) {
+  const replyName = prompt("Your name:");
+  const replyText = prompt("Your reply:");
+  if (replyName && replyText) {
+    comments[index].replies = comments[index].replies || [];
+    comments[index].replies.push({ name: replyName, text: replyText });
+    localStorage.setItem(storageKey, JSON.stringify(comments));
+    displayComments();
+  }
+}
+
+// Initialize display
+displayComments();
 </script>
+
 
 </body>
 </html>
