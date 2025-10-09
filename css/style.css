@@ -637,3 +637,87 @@ body.dark .search-box input {
   color: #777;
   margin-left: 5px;
 }
+
+/* === Comment Section Styling === */
+.comments {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  font-family: "Roboto", sans-serif;
+}
+
+.comments h3, 
+.comments h4 {
+  color: #333;
+  margin-bottom: 0.8rem;
+}
+
+.comments form {
+  margin-bottom: 1.5rem;
+}
+
+.comments input[type="text"],
+.comments textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.comments button[type="submit"],
+.comments .reply-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 0.95rem;
+}
+
+.comments button[type="submit"]:hover,
+.comments .reply-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Comment List */
+#comment-list {
+  margin-top: 1rem;
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.comment-item {
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+  list-style-type: none;
+}
+
+.comment-item strong {
+  color: #333;
+}
+
+.comment-item .replies {
+  margin-top: 0.6rem;
+  margin-left: 1.2rem;
+  border-left: 2px solid #ddd;
+  padding-left: 0.8rem;
+}
+
+.comment-item .replies li {
+  margin-top: 0.4rem;
+  background: #fafafa;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
