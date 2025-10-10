@@ -167,13 +167,59 @@
     </ul>
 
  <section class="popular-posts">
-  <h3>Popular Posts</h3>
-  <ul id="popular-posts-list">
+  <h3>🔥 Popular Posts</h3>
+  <ul id="popular-posts-list" class="popular-list">
     <li>Loading popular posts...</li>
   </ul>
 </section>
 
+<style>
+.popular-list {
+  list-style: none;
+  padding: 0;
+}
+.popular-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.popular-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+.popular-list img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 6px;
+}
+.popular-list a {
+  color: var(--primary, #012c4b);
+  font-weight: 500;
+  text-decoration: none;
+  flex: 1;
+}
+.popular-list small {
+  color: #666;
+  font-size: 0.85rem;
+}
+</style>
+
 <script>
+const thumbnails = {
+  "/post1.html": "/images/post1-thumb.jpg",
+  "/post2.html": "/images/post2-thumb.jpg",
+  "/post3.html": "/images/post3-thumb.jpg",
+  "/post4.html": "/images/post4-thumb.jpg",
+  "/post5.html": "/images/post5-thumb.jpg"
+};
+
 async function fetchPopularPosts() {
   try {
     const response = await fetch("/.netlify/functions/popular-posts");
@@ -187,7 +233,16 @@ async function fetchPopularPosts() {
         const views = row.metricValues[0].value;
 
         const li = document.createElement("li");
-        li.innerHTML = `<a href="${pagePath}">${pagePath.replace("/latest-post/", "").replace(".html", "").replace(/-/g, " ")}</a> (${views} views)`;
+        const thumb = thumbnails[pagePath] || "/images/default-thumb.jpg";
+        const title = pagePath.replace("/latest-post/", "").replace(".html", "").replace(/-/g, " ");
+
+        li.innerHTML = `
+          <img src="${thumb}" alt="${title}">
+          <div>
+            <a href="${pagePath}">${title}</a><br>
+            <small>${views} views</small>
+          </div>
+        `;
         list.appendChild(li);
       });
     } else {
