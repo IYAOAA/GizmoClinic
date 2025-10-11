@@ -6,7 +6,7 @@
     "image": "images/wifi.png",
     "summary": "Here’s a guide to get you back online, whether you’re on Windows or a phone.",
     "content": "latest-post/post6.html",
-    "categories": ["Windows", "Network"]
+    "categories": ["All", "Windows", "Network"]
   },
   {
     "title": "How to Make Your Android Phone Battery Last Longer",
@@ -15,7 +15,7 @@
     "image": "images/android battery.jpg",
     "summary": "A phone that dies before the day is through, is one of the biggest annoyances too.",
     "content": "latest-post/post5.html",
-    "categories": ["Andriod"]
+    "categories": ["Andriod", "All"]
   },
   {
     "title": "How to Reset a Forgotten Gmail Password",
