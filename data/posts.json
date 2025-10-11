@@ -5,7 +5,8 @@
     "date": "2025-10-01",
     "image": "images/wifi.png",
     "summary": "Here’s a guide to get you back online, whether you’re on Windows or a phone.",
-    "content": "latest-post/post6.html"
+    "content": "latest-post/post6.html",
+    "categories": ["Windows", "Network"]
   },
   {
     "title": "How to Make Your Android Phone Battery Last Longer",
@@ -13,7 +14,8 @@
     "date": "2025-09-30",
     "image": "images/android battery.jpg",
     "summary": "A phone that dies before the day is through, is one of the biggest annoyances too.",
-    "content": "latest-post/post5.html"
+    "content": "latest-post/post5.html",
+    "categories": ["Andriod"]
   },
   {
     "title": "How to Reset a Forgotten Gmail Password",
@@ -21,7 +23,8 @@
     "date": "2025-09-29",
     "image": "images/gmail.jpg",
     "summary": "Forgot your Gmail password? Don’t panic — here’s how to get back in.",
-    "content": "latest-post/post4.html"
+    "content": "latest-post/post4.html",
+    "categories": ["Network"]
   },
   {
     "title": "How to Speed Up Windows 11 (Practical Steps That Work)",
@@ -29,7 +32,9 @@
     "date": "2025-09-28",
     "image": "images/window 11.jpg",
     "summary": "Windows 11 is sleek, but can get slow. Learn how to make it fast again.",
-    "content": "latest-post/post3.html"
+    "content": "latest-post/post3.html",
+    "categories": ["Windows"]
+    
   },
   {
     "title": "How to Clear Cache and Cookies on Any Web Browser",
@@ -37,7 +42,8 @@
     "date": "2025-09-28",
     "image": "images/browsers.png",
     "summary": "Learn how to clear cache and cookies to fix website issues and speed up your browser.",
-    "content": "latest-post/post2.html"
+    "content": "latest-post/post2.html",
+    "categories": ["Windows"]
   },
   {
     "title": "How to Stop Windows Update (3 Easy Ways)",
@@ -45,6 +51,7 @@
     "date": "2025-09-27",
     "image": "images/post1.jpg",
     "summary": "Windows Updates can interrupt your work — here’s how to pause or stop them easily.",
-    "content": "latest-post/post1.html"
+    "content": "latest-post/post1.html",
+    "categories": ["Windows"]
   }
 ]

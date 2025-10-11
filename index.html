@@ -110,15 +110,39 @@
     })
     .catch(err => console.error('Error loading posts:', err));
 </script>
+
  </section>
   <!-- sidebar -->
   <aside class="sidebar">
     <h3>Categories</h3>
-    <ul class="category-list">
+<ul id="category-list" class="category-list"></ul>
       <li><a href="categories/windows.html">Windows Fix</a></li>
       <li><a href="categories/general.html">General Tips</a></li>
       <li><a href="categories/android.html">Android</a></li>
+      <li><a href="categories/Network.html">Network</a></li>
     </ul>
+
+    <script>
+  fetch('data/posts.json')
+    .then(res => res.json())
+    .then(posts => {
+      const allCategories = new Set();
+
+      // Loop through all posts and collect categories
+      posts.forEach(post => {
+        if (post.categories) {
+          post.categories.forEach(cat => allCategories.add(cat));
+        }
+      });
+
+      // Convert Set to Array and render to sidebar
+      const list = document.getElementById('category-list');
+      list.innerHTML = Array.from(allCategories).map(cat => `
+        <li><a href="#">${cat}</a></li>
+      `).join('');
+    })
+    .catch(err => console.error('Error loading categories:', err));
+</script>
 
  <section class="popular-posts">
   <h3>🔥 Popular Posts</h3>
@@ -211,7 +235,6 @@ async function fetchPopularPosts() {
 fetchPopularPosts();
 </script>
 
-
     <!-- Search Bar -->
     <div class="search-box">
       <input type="text" placeholder="Search..." />
@@ -226,10 +249,23 @@ fetchPopularPosts();
     </div>
 
     <h3>Recent Posts</h3>
-    <ul class="recent-posts">
-      <li><a href="latest-post/post1.html">How to Stop Windows Update in 2 Minutes</a></li>
-      <li><a href="latest-post/post6.html">How to Fix Wi-Fi Not Connecting on Windows or Phones</a></li>
-    </ul>
+<ul id="recent-posts" class="recent-posts"></ul>
+
+<script>
+  // Load latest 5 posts from posts.json
+  fetch('data/posts.json')
+    .then(res => res.json())
+    .then(posts => {
+      const recent = posts.slice(0, 5); // top 5
+      const list = document.getElementById('recent-posts');
+
+      list.innerHTML = recent.map(post => `
+        <li><a href="${post.content}">${post.title}</a></li>
+      `).join('');
+    })
+    .catch(err => console.error('Error loading recent posts:', err));
+</script>
+
 
     <h3>Follow IYAOAA</h3>
     <p>Get new tips straight to your inbox.</p>
