@@ -721,3 +721,8 @@ body.dark .search-box input {
   padding: 0.5rem;
   border-radius: 5px;
 }
+
+.category-link.active {
+  font-weight: bold;
+  color: var(--primary);
+}
