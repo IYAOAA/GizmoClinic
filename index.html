@@ -135,6 +135,12 @@
       list.innerHTML = Array.from(allCategories).map(cat => `
         <li><a href="#">${cat}</a></li>
       `).join('');
+      if (category === 'all') {
+  displayPosts(allPosts);
+} else {
+  const filtered = allPosts.filter(post => post.categories && post.categories.includes(category));
+  displayPosts(filtered);
+}
     })
     .catch(err => console.error('Error loading categories:', err));
 </script>
@@ -190,14 +196,6 @@
     });
   }
 </script>
-
-list.innerHTML = `
-  <li><a href="#" class="category-link" data-category="all">All</a></li>
-` + Array.from(allCategories).map(cat => `
-  <li><a href="#" class="category-link" data-category="${cat}">${cat}</a></li>
-`).join('');
-
-
 
  <section class="popular-posts">
   <h3>🔥 Popular Posts</h3>
