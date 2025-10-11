@@ -24,7 +24,7 @@
     "image": "images/gmail.jpg",
     "summary": "Forgot your Gmail password? Don’t panic — here’s how to get back in.",
     "content": "latest-post/post4.html",
-    "categories": ["Network"]
+    "categories": ["Network", "All"]
   },
   {
     "title": "How to Speed Up Windows 11 (Practical Steps That Work)",
@@ -33,7 +33,7 @@
     "image": "images/window 11.jpg",
     "summary": "Windows 11 is sleek, but can get slow. Learn how to make it fast again.",
     "content": "latest-post/post3.html",
-    "categories": ["Windows"]
+    "categories": ["Windows", "All"]
     
   },
   {
@@ -43,7 +43,7 @@
     "image": "images/browsers.png",
     "summary": "Learn how to clear cache and cookies to fix website issues and speed up your browser.",
     "content": "latest-post/post2.html",
-    "categories": ["Windows"]
+    "categories": ["Windows", "All"]
   },
   {
     "title": "How to Stop Windows Update (3 Easy Ways)",
@@ -52,6 +52,6 @@
     "image": "images/post1.jpg",
     "summary": "Windows Updates can interrupt your work — here’s how to pause or stop them easily.",
     "content": "latest-post/post1.html",
-    "categories": ["Windows"]
+    "categories": ["Windows", "All"]
   }
 ]
