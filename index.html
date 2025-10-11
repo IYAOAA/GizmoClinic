@@ -139,6 +139,66 @@
     .catch(err => console.error('Error loading categories:', err));
 </script>
 
+<script>
+  let allPosts = [];
+
+  // Load posts from JSON
+  fetch('data/posts.json')
+    .then(res => res.json())
+    .then(posts => {
+      allPosts = posts;
+      displayPosts(allPosts); // show all initially
+      loadCategories(allPosts); // build sidebar categories
+    })
+    .catch(err => console.error('Error loading posts:', err));
+
+  // ===== Display Posts =====
+  function displayPosts(posts) {
+    const container = document.getElementById('posts-container');
+    container.innerHTML = posts.map(post => `
+      <article class="post-card">
+        <img src="${post.image}" alt="${post.title}">
+        <h3><a href="${post.content}">${post.title}</a></h3>
+        <p>${post.summary}</p>
+        <small>${post.date}</small>
+      </article>
+    `).join('');
+  }
+
+  // ===== Load Categories =====
+  function loadCategories(posts) {
+    const allCategories = new Set();
+    posts.forEach(post => {
+      if (post.categories) {
+        post.categories.forEach(cat => allCategories.add(cat));
+      }
+    });
+
+    const list = document.getElementById('category-list');
+    list.innerHTML = Array.from(allCategories).map(cat => `
+      <li><a href="#" class="category-link" data-category="${cat}">${cat}</a></li>
+    `).join('');
+
+    // Add click listeners
+    document.querySelectorAll('.category-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const category = e.target.getAttribute('data-category');
+        const filtered = allPosts.filter(post => post.categories && post.categories.includes(category));
+        displayPosts(filtered);
+      });
+    });
+  }
+</script>
+
+list.innerHTML = `
+  <li><a href="#" class="category-link" data-category="all">All</a></li>
+` + Array.from(allCategories).map(cat => `
+  <li><a href="#" class="category-link" data-category="${cat}">${cat}</a></li>
+`).join('');
+
+
+
  <section class="popular-posts">
   <h3>🔥 Popular Posts</h3>
   <ul id="popular-posts-list" class="popular-list">
