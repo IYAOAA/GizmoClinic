@@ -86,7 +86,7 @@
   <section class="content">
    <h2 id="latest-posts">Latest Posts</h2>
 
-   <section id="latest-posts">
+    <section id="latest-posts">
   <h2>Latest Posts</h2>
   <div id="posts-container" class="post-grid"></div>
 </section>
@@ -112,6 +112,22 @@
     .catch(err => console.error('Error loading posts:', err));
 </script>
 
+
+  <!-- sidebar -->
+  <aside class="sidebar">
+    <h3>Categories</h3>
+    <ul class="category-list">
+      <li><a href="categories/windows.html">Windows Fix</a></li>
+      <li><a href="categories/general.html">General Tips</a></li>
+      <li><a href="categories/android.html">Android</a></li>
+    </ul>
+
+ <section class="popular-posts">
+  <h3>🔥 Popular Posts</h3>
+  <ul id="popular-posts-list" class="popular-list">
+    <li>Loading popular posts...</li>
+  </ul>
+</section>
 
 <style>
 .popular-list {
