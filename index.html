@@ -86,92 +86,32 @@
   <section class="content">
    <h2 id="latest-posts">Latest Posts</h2>
 
-    <section class="blog-posts">
-      <!-- Your blog posts (unchanged) -->
-      <article class="post">
-        <img src="images/wifi.png" alt="Post image" class="post-image">
-        <h2 class="post-title"><a href="latest-post/post6.html">How to Fix Wi-Fi Not Connecting on Windows or Phones</a></h2>
-        <p class="post-meta">Posted on October 01, 2025 • by Ibrahim</p>
-        <p class="post-excerpt">Here’s a guide to get you back online, whether you’re on Windows or a phone.</p>
-        <div class="post-tags">
-          <a href="#">Windows</a> <a href="#">Performance</a>
-        </div>
-        <a href="latest-post/post6.html" class="read-more">Read more →</a>
-      </article>
-
-      <article class="post">
-        <img src="images/android battery.jpg" alt="Post image" class="post-image">
-        <h2 class="post-title"><a href="latest-post/post5.html">How to Make Your Android Phone Battery Last Longer</a></h2>
-        <p class="post-meta">Posted on September 30, 2025 • by Ibrahim</p>
-        <p class="post-excerpt">A phone that dies before the day is through, is one of the biggest annoyances too.</p>
-        <div class="post-tags">
-          <a href="#">Windows</a> <a href="#">Performance</a>
-        </div>
-        <a href="latest-post/post5.html" class="read-more">Read more →</a>
-      </article>
-
-      <article class="post">
-        <img src="images/gmail.jpg" alt="Post image" class="post-image">
-        <h2 class="post-title"><a href="latest-post/post4.html">How to Reset a Forgotten Gmail Password</a></h2>
-        <p class="post-meta">Posted on September 29, 2025 • by Ibrahim</p>
-        <p class="post-excerpt">Forgot your Gmail password? Don’t panic — Google’s account recovery system makes it possible to get back in...</p>
-        <div class="post-tags">
-          <a href="#">Windows</a> <a href="#">Performance</a>
-        </div>
-        <a href="latest-post/post4.html" class="read-more">Read more →</a>
-      </article>
-
-        <article class="post">
-        <img src="images/window 11.jpg" alt="Post image" class="post-image">
-        <h2 class="post-title"><a href="latest-post/post3.html">How to Speed Up Windows 11 (Practical Steps That Work</a></h2>
-        <p class="post-meta">Posted on September 28, 2025 • by Ibrahim</p>
-        <p class="post-excerpt">Windows 11 is sleek, but over time it can feel sluggish — startup takes longer, apps hesitate, and your laptop fan spins like a jet engine.</p>
-        <div class="post-tags">
-          <a href="#">Windows</a> <a href="#">Performance</a>
-        </div>
-        <a href="latest-post/post3.html" class="read-more">Read more →</a>
-      </article>
-
-       <article class="post">
-        <img src="images/browsers.png" alt="Post image" class="post-image">
-        <h2 class="post-title"><a href="latest-post/post2.html">How to Clear Cache and Cookies on Any Web Browser</a></h2>
-        <p class="post-meta">Posted on September 28, 2025 • by Ibrahim</p>
-        <p class="post-excerpt">Over time, your browser stores temporary files (cache) and small bits of data (cookies) to make websites load faster and remember your logins.</p>
-        <div class="post-tags">
-          <a href="#">Windows</a> <a href="#">Performance</a>
-        </div>
-        <a href="latest-post/post2.html" class="read-more">Read more →</a>
-      </article>
-
-      <article class="post">
-        <img src="images/windows-update.png" alt="Post image" class="post-image">
-        <h2 class="post-title"><a href="latest-post/How to Stop Windows Update in 2 Minutes.html">How to Stop Windows Update in 2 Minutes (3 Easy Ways)</a></h2>
-        <p class="post-meta">Posted on September 27, 2025 • by Ibrahim</p>
-        <p class="post-excerpt">Windows Updates are meant to improve your PC, but sometimes they pop up at the worst moments, eat bandwidth, or break something that was working. Below are three proven ways to stop them — from the quick temporary pause to a deeper, more permanent block.</p>
-        <div class="post-tags">
-          <a href="#">Windows</a> <a href="#">Performance</a>
-        </div>
-        <a href="latest-post/How to Stop Windows Update in 2 Minutes.html" class="read-more">Read more →</a>
-      </article>
-      <!-- Other posts unchanged... -->
-    </section>
-  </section>
-
-  <!-- sidebar -->
-  <aside class="sidebar">
-    <h3>Categories</h3>
-    <ul class="category-list">
-      <li><a href="categories/windows.html">Windows Fix</a></li>
-      <li><a href="categories/general.html">General Tips</a></li>
-      <li><a href="categories/android.html">Android</a></li>
-    </ul>
-
- <section class="popular-posts">
-  <h3>🔥 Popular Posts</h3>
-  <ul id="popular-posts-list" class="popular-list">
-    <li>Loading popular posts...</li>
-  </ul>
+   <section id="latest-posts">
+  <h2>Latest Posts</h2>
+  <div id="posts-container" class="post-grid"></div>
 </section>
+
+<script>
+  fetch('data/posts.json')
+    .then(res => res.json())
+    .then(posts => {
+      const container = document.getElementById('posts-container');
+      container.innerHTML = posts.map(post => `
+        <article class="post">
+          <img src="${post.image}" alt="${post.title}" class="post-image">
+          <h2 class="post-title"><a href="${post.content}">${post.title}</a></h2>
+          <p class="post-meta">Posted on ${new Date(post.date).toDateString()} • by Ibrahim</p>
+          <p class="post-excerpt">${post.summary}</p>
+          <div class="post-tags">
+            <a href="#">Windows</a> <a href="#">Performance</a>
+          </div>
+          <a href="${post.content}" class="read-more">Read more →</a>
+        </article>
+      `).join('');
+    })
+    .catch(err => console.error('Error loading posts:', err));
+</script>
+
 
 <style>
 .popular-list {
