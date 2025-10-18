@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="icon" type="image/png" href="/favicon.png">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>How to Speed Up Windows 11 – IYAOAA</title>
+   <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+  <h1 class="logo"><a href="../index.html">IYAOAA</a></h1>
+  <nav>
+    <a href="../index.html">Home</a> |
+    <a href="../about.html">About</a> |
+    <a href="../contact.html">Contact</a> |
+    <a href="../archive.html">Archive</a>
+  </nav>
+  </header>
+
+<main class="post-page">
+  <article class="post">
+    <h2>How to Speed Up Windows 11 (Practical Steps That Work)</h2>
+    <p class="post-meta">Posted • 2025 • by Ibrahim</p>
+
+    <img src="../images/window 11.jpg" alt="Windows 11" class="post-image">
+
+    <p>Windows 11 is sleek, but over time it can feel sluggish — startup takes longer, apps hesitate, and your laptop fan spins like a jet engine. The good news: you can speed it up without paying for “optimizer” software. Here’s a step-by-step guide.</p>
+
+    <h3>1. Restart and Update First</h3>
+    <ul>
+      <li><strong>Restart your PC:</strong> Sounds obvious, but Windows 11 loves to “sleep” instead of reboot. Restart to clear temporary glitches.</li>
+      <li><strong>Install updates:</strong> Staying updated often fixes performance bugs. Go to Settings → Windows Update → Check for updates.</li>
+    </ul>
+
+    <h3>2. Disable Startup Apps</h3>
+    <p>Many apps launch at startup and slow down boot time:</p>
+    <ul>
+      <li>Press <code>Ctrl + Shift + Esc</code> to open Task Manager.</li>
+      <li>Click the Startup apps tab.</li>
+      <li>Right-click apps you don’t need at startup → Disable.</li>
+    </ul>
+
+    <h3>3. Uninstall Unneeded Apps</h3>
+    <p>Unused programs eat disk space and background resources:</p>
+    <ul>
+      <li>Press Windows Key + I → Apps → Installed apps.</li>
+      <li>Sort by size or install date.</li>
+      <li>Uninstall what you don’t need.</li>
+    </ul>
+
+    <h3>4. Use Storage Sense / Disk Cleanup</h3>
+    <p>Free space improves performance:</p>
+    <ul>
+      <li>Go to Settings → System → Storage → Storage Sense and turn it on.</li>
+      <li>Or run Disk Cleanup: Press Windows Key + S, type “Disk Cleanup,” select your drive, tick temp files, and click OK.</li>
+    </ul>
+
+    <h3>5. Turn Off Visual Effects</h3>
+    <p>Windows 11 has animations and transparency that can slow older PCs:</p>
+    <ul>
+      <li>Press Windows Key + S, type Performance, choose Adjust the appearance and performance of Windows.</li>
+      <li>In the window, select Adjust for best performance (or manually uncheck animations you don’t need).</li>
+    </ul>
+
+    <h3>6. Check for Malware</h3>
+    <p>Malware can hog CPU and RAM. Run Windows Security → Virus & threat protection → Quick scan.</p>
+
+    <h3>7. Optimize Power Settings</h3>
+    <p>Use a performance plan if you’re plugged in:</p>
+    <ul>
+      <li>Press Windows Key + S, type Power plan.</li>
+      <li>Choose High performance or Balanced, depending on your needs.</li>
+    </ul>
+
+    <h3>8. Free Up RAM with Virtual Memory Adjustments</h3>
+    <p>If your PC has limited RAM, tweak the paging file:</p>
+    <ul>
+      <li>Press Windows Key + S, type Advanced system settings.</li>
+      <li>Under Performance, click Settings → Advanced → Virtual memory.</li>
+      <li>Let Windows manage automatically or set a custom size based on your RAM.</li>
+    </ul>
+
+    <h3>9. Defragment / Optimize Drives</h3>
+    <p>For HDDs (not SSDs), defragmenting helps:</p>
+    <ul>
+      <li>Press Windows Key + S, type Defragment and Optimize Drives.</li>
+      <li>Select the drive, click Optimize.</li>
+    </ul>
+
+    <h3>10. Check Background Apps and Services</h3>
+    <p>Go to Settings → Privacy & security → Background apps. Disable apps you rarely use.</p>
+
+    <h3>11. Upgrade Hardware If Possible</h3>
+    <p>If nothing else works, adding RAM or moving to an SSD gives the biggest boost. Windows 11 loves fast storage.</p>
+
+    <h3>Final Thoughts</h3>
+    <p>Windows 11 can be as fast as you need it to be without extra software. Disable startup apps, clean storage, tweak visuals, and keep things updated. Combined, these steps can make an immediate difference in everyday performance.</p>
+
+    <p><a href="../index.html">← Back to Home</a></p>
+  </article>
+</main>
+
+<footer>
+  <p>&copy; 2025 IYAOAA — All rights reserved.</p>
+</footer>
+<script src="js/theme.js"></script>
+
+<!-- Comment Section --> 
+<section class="comments">
+  <h3>Leave a Comment</h3>
+  <form name="comment" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="comment">
+    <p hidden>
+      <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+    </p>
+    <p>
+      <label>Name: <input type="text" name="name" required></label>
+    </p>
+    <p>
+      <label>Comment: <textarea name="message" required></textarea></label>
+    </p>
+    <p>
+      <button type="submit">Submit Comment</button>
+    </p>
+  </form>
+
+  <!-- Display Comments -->
+  <div id="comment-list">
+    <h4>Visitor Comments</h4>
+    <ul id="comments"></ul>
+  </div>
+</section>
+
+<script>
+// ===== Comment System (Per Post + Local Display + Netlify Save) =====
+const form = document.querySelector('form[name="comment"]');
+const commentsList = document.getElementById('comments');
+
+// Get unique key for each post (based on its filename)
+const postKey = `comments_${window.location.pathname.split('/').pop()}`;
+
+// Load saved comments for this post
+let comments = JSON.parse(localStorage.getItem(postKey)) || [];
+
+// Display existing comments
+window.addEventListener('DOMContentLoaded', displayComments);
+
+// Handle new comment submission
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = form.querySelector('input[name="name"]').value.trim();
+  const message = form.querySelector('textarea[name="message"]').value.trim();
+
+  if (!name || !message) return;
+
+  const newComment = {
+    id: Date.now(),
+    name,
+    message,
+    replies: []
+  };
+
+  // Save locally for this post only
+  comments.push(newComment);
+  localStorage.setItem(postKey, JSON.stringify(comments));
+
+  displayComments();
+
+  // Allow Netlify to process the form in background
+  form.submit();
+
+  form.reset();
+  alert("Comment submitted successfully!");
+});
+
+// Display comments + replies
+function displayComments() {
+  commentsList.innerHTML = '';
+
+  comments.forEach(comment => {
+    const li = document.createElement('li');
+    li.classList.add('comment-item');
+    li.innerHTML = `
+      <strong>${comment.name}</strong>: ${comment.message}
+      <button class="reply-btn" data-id="${comment.id}">Reply</button>
+      <ul class="replies">
+        ${comment.replies.map(r => `<li><em>${r.name}</em>: ${r.message}</li>`).join('')}
+      </ul>
+    `;
+    commentsList.appendChild(li);
+  });
+
+  // Reply buttons
+  document.querySelectorAll('.reply-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = e.target.getAttribute('data-id');
+      const replyName = prompt("Your name:");
+      const replyText = prompt("Your reply:");
+
+      if (replyName && replyText) {
+        const comment = comments.find(c => c.id == id);
+        comment.replies.push({ name: replyName, message: replyText });
+        localStorage.setItem(postKey, JSON.stringify(comments));
+        displayComments();
+      }
+    });
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="icon" type="image/png" href="/favicon.png">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>How to Fix Wi-Fi Not Connecting on Windows or Phones – IYAOAA</title>
+   <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+  <h1 class="logo"><a href="../index.html">IYAOAA</a></h1>
+  <nav>
+    <a href="../index.html">Home</a> |
+    <a href="../about.html">About</a> |
+    <a href="../contact.html">Contact</a> |
+    <a href="../archive.html">Archive</a>
+  </nav>
+  <hr>
+</header>
+
+<main class="post-page">
+  <article class="post">
+    <h2>How to Fix Wi-Fi Not Connecting on Windows or Phones</h2>
+    <p class="post-meta">Posted • 2025 • by Ibrahim</p>
+
+    <img src="../images/wifi.png" alt="Fix Wi-Fi Connection Issues" class="post-image">
+
+    <p>Few things are more annoying than your Wi-Fi refusing to connect when you need it most. Luckily, most problems come down to simple settings or quick resets. Here’s a guide to get you back online, whether you’re on Windows or a phone.</p>
+
+    <h3>1. Check the Basics First</h3>
+    <ul>
+      <li><strong>Airplane mode:</strong> Make sure it’s off.</li>
+      <li><strong>Wi-Fi switch:</strong> On laptops, confirm the Wi-Fi button or shortcut (like <em>Fn + F2</em>) isn’t toggled off.</li>
+      <li><strong>Router lights:</strong> If the Wi-Fi light on your router isn’t blinking, the issue may be with your internet provider, not your device.</li>
+    </ul>
+
+    <h3>2. Restart Everything</h3>
+    <p>Restart your computer or phone. Then restart your router by unplugging it for 30 seconds and plugging it back in. This alone fixes many “can’t connect” problems.</p>
+
+    <h3>3. Forget and Reconnect to the Network</h3>
+    <p>Sometimes your saved Wi-Fi profile gets corrupted.</p>
+    <p><strong>On Windows:</strong></p>
+    <ol>
+      <li>Click the Wi-Fi icon on the taskbar.</li>
+      <li>Right-click your network → <em>Forget</em>.</li>
+      <li>Reconnect by entering the password again.</li>
+    </ol>
+    <p><strong>On Android/iPhone:</strong></p>
+    <ol>
+      <li>Go to <em>Settings → Wi-Fi</em>.</li>
+      <li>Tap your network → <em>Forget/Remove</em>.</li>
+      <li>Reconnect and re-enter the password.</li>
+    </ol>
+
+    <h3>4. Run Troubleshooters (Windows)</h3>
+    <p>Press <em>Windows Key + I → System → Troubleshoot → Other troubleshooters</em>.  
+    Run the <em>Internet Connections</em> troubleshooter. Windows will attempt to diagnose and fix the problem automatically.</p>
+
+    <h3>5. Check IP and DNS Settings</h3>
+    <p><strong>On Windows:</strong></p>
+    <ol>
+      <li>Press <em>Windows Key + R</em>, type <code>ncpa.cpl</code>, hit Enter.</li>
+      <li>Right-click your Wi-Fi adapter → <em>Properties</em>.</li>
+      <li>Double-click <em>Internet Protocol Version 4 (TCP/IPv4)</em>.</li>
+      <li>Make sure “Obtain an IP address automatically” and “Obtain DNS server automatically” are selected.</li>
+    </ol>
+    <p><strong>On Phones:</strong>  
+    Go to <em>Wi-Fi → your network → Advanced/Modify settings</em>, and reset IP/DNS to automatic if they’re custom.</p>
+
+    <h3>6. Update Network Drivers (Windows)</h3>
+    <ol>
+      <li>Press <em>Windows Key + X</em> → <em>Device Manager</em>.</li>
+      <li>Expand <em>Network adapters</em>.</li>
+      <li>Right-click your Wi-Fi card → <em>Update driver → Search automatically</em>.</li>
+    </ol>
+
+    <h3>7. Reset Network Settings</h3>
+    <p><strong>On Windows:</strong></p>
+    <ol>
+      <li>Press <em>Windows Key + I → Network & Internet → Advanced network settings</em>.</li>
+      <li>Scroll down to <em>Network reset</em> → Reset now.</li>
+    </ol>
+    <p><strong>On Android/iPhone:</strong></p>
+    <ul>
+      <li><strong>Android:</strong> Go to <em>Settings → System → Reset options → Reset Wi-Fi, mobile & Bluetooth</em>.</li>
+      <li><strong>iPhone:</strong> Go to <em>Settings → General → Transfer or Reset iPhone → Reset → Reset Network Settings</em>.</li>
+    </ul>
+
+    <h3>8. Check for Hardware Issues</h3>
+    <p>Try connecting another device to the same Wi-Fi.  
+    If no device works, it’s your router or ISP.  
+    If other devices connect fine, your computer or phone’s Wi-Fi adapter may be faulty.</p>
+
+    <h3>Final Thoughts</h3>
+    <p>Wi-Fi issues can be frustrating, but in most cases they’re solved by restarting, forgetting the network, or resetting settings. If problems persist, it may be time to contact your ISP or check for hardware failure.</p>
+
+    <p><a href="../index.html">← Back to Home</a></p>
+  </article>
+</main>
+
+<footer>
+  <p>&copy; 2025 IYAOAA — All rights reserved.</p>
+</footer>
+
+<!-- Comment Section --> 
+<section class="comments">
+  <h3>Leave a Comment</h3>
+  <form name="comment" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="comment">
+    <p hidden>
+      <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+    </p>
+    <p>
+      <label>Name: <input type="text" name="name" required></label>
+    </p>
+    <p>
+      <label>Comment: <textarea name="message" required></textarea></label>
+    </p>
+    <p>
+      <button type="submit">Submit Comment</button>
+    </p>
+  </form>
+
+  <!-- Display Comments -->
+  <div id="comment-list">
+    <h4>Visitor Comments</h4>
+    <ul id="comments"></ul>
+  </div>
+</section>
+
+<script>
+// ===== Comment System (Per Post + Local Display + Netlify Save) =====
+const form = document.querySelector('form[name="comment"]');
+const commentsList = document.getElementById('comments');
+
+// Get unique key for each post (based on its filename)
+const postKey = `comments_${window.location.pathname.split('/').pop()}`;
+
+// Load saved comments for this post
+let comments = JSON.parse(localStorage.getItem(postKey)) || [];
+
+// Display existing comments
+window.addEventListener('DOMContentLoaded', displayComments);
+
+// Handle new comment submission
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = form.querySelector('input[name="name"]').value.trim();
+  const message = form.querySelector('textarea[name="message"]').value.trim();
+
+  if (!name || !message) return;
+
+  const newComment = {
+    id: Date.now(),
+    name,
+    message,
+    replies: []
+  };
+
+  // Save locally for this post only
+  comments.push(newComment);
+  localStorage.setItem(postKey, JSON.stringify(comments));
+
+  displayComments();
+
+  // Allow Netlify to process the form in background
+  form.submit();
+
+  form.reset();
+  alert("Comment submitted successfully!");
+});
+
+// Display comments + replies
+function displayComments() {
+  commentsList.innerHTML = '';
+
+  comments.forEach(comment => {
+    const li = document.createElement('li');
+    li.classList.add('comment-item');
+    li.innerHTML = `
+      <strong>${comment.name}</strong>: ${comment.message}
+      <button class="reply-btn" data-id="${comment.id}">Reply</button>
+      <ul class="replies">
+        ${comment.replies.map(r => `<li><em>${r.name}</em>: ${r.message}</li>`).join('')}
+      </ul>
+    `;
+    commentsList.appendChild(li);
+  });
+
+  // Reply buttons
+  document.querySelectorAll('.reply-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = e.target.getAttribute('data-id');
+      const replyName = prompt("Your name:");
+      const replyText = prompt("Your reply:");
+
+      if (replyName && replyText) {
+        const comment = comments.find(c => c.id == id);
+        comment.replies.push({ name: replyName, message: replyText });
+        localStorage.setItem(postKey, JSON.stringify(comments));
+        displayComments();
+      }
+    });
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Admin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #f9f9f9;
+      border-radius: 10px;
+    }
+    label { display: block; margin-top: 1rem; }
+    input, textarea {
+      width: 100%;
+      padding: .5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 1rem;
+      padding: .6rem 1.2rem;
+      background: #012c4b;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background: #034d86; }
+  </style>
+</head>
+<body>
+  <h2>Add New Post</h2>
+  <form id="postForm">
+    <label>Title</label>
+    <input type="text" id="title" required>
+
+    <label>Slug</label>
+    <input type="text" id="slug" required>
+
+    <label>Date</label>
+    <input type="date" id="date" required>
+
+    <label>Image URL</label>
+    <input type="text" id="image" placeholder="images/sample.jpg">
+
+    <label>Summary</label>
+    <textarea id="summary" rows="3" required></textarea>
+
+    <label>Content Path</label>
+    <input type="text" id="content" placeholder="latest-post/post.html">
+
+    <label>Categories (comma separated)</label>
+    <input type="text" id="categories" placeholder="Android, Tips">
+
+    <button type="submit">Save Post</button>
+  </form>
+
+  <p id="status"></p>
+
+ <script>
+  const form = document.getElementById("postForm");
+  const statusMsg = document.getElementById("status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Collect form data
+    const title = document.getElementById("title").value.trim();
+    const content = document.getElementById("content").value.trim();
+    const author = document.getElementById("author").value.trim();
+    const date = new Date().toISOString().split("T")[0];
+
+    if (!title || !content || !author) {
+      statusMsg.textContent = "⚠️ Please fill out all fields.";
+      return;
+    }
+
+    statusMsg.textContent = "⏳ Saving post...";
+
+    try {
+      // Get existing posts.json from your site
+      const res = await fetch("/data/posts.json");
+      const posts = await res.json();
+
+      // Add the new post to the top
+      posts.unshift({ title, content, author, date });
+
+      // ✅ Send posts data to Netlify Function
+      await fetch("/.netlify/functions/savePost", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(posts)
+      })
+        .then(res => res.json())
+        .then(data => {
+          statusMsg.textContent = data.message;
+          form.reset();
+        })
+        .catch(err => {
+          console.error(err);
+          statusMsg.textContent = "❌ Error saving post. Check console.";
+        });
+
+    } catch (err) {
+      console.error(err);
+      statusMsg.textContent = "❌ Error saving post. Check console.";
+    }
+  });
+</script>
+
+</body>
+</html>

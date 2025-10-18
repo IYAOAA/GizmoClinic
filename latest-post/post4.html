@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="icon" type="image/png" href="/favicon.png">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>How to Reset a Forgotten Gmail Password – IYAOAA</title>
+   <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+  <h1 class="logo"><a href="../index.html">IYAOAA</a></h1>
+  <nav>
+    <a href="../index.html">Home</a> |
+    <a href="../about.html">About</a> |
+    <a href="../contact.html">Contact</a> |
+    <a href="../archive.html">Archive</a>
+  </nav>
+  <hr>
+</header>
+
+<main class="post-page">
+  <article class="post">
+    <h2>How to Reset a Forgotten Gmail Password</h2>
+    <p class="post-meta">Posted • 2025 • by Ibrahim</p>
+
+    <img src="../images/gmail.jpg" alt="Reset Gmail Password" class="post-image">
+
+    <p>Forgot your Gmail password? Don’t panic — Google’s account recovery system makes it possible to get back in, as long as you still have access to your recovery email, phone, or security questions. Follow these steps.</p>
+
+    <h3>1. Go to Google’s Account Recovery Page</h3>
+    <ul>
+      <li>Open any browser and go to <a href="https://accounts.google.com/signin/recovery" target="_blank">https://accounts.google.com/signin/recovery</a>.</li>
+      <li>Enter the Gmail address you’re trying to recover and click Next.</li>
+    </ul>
+
+    <h3>2. Confirm Your Identity</h3>
+    <p>Google will try to verify that it’s really you. Depending on your setup you might see one or more of these:</p>
+    <ul>
+      <li>A prompt on your signed-in phone.</li>
+      <li>A text message with a code to your recovery phone number.</li>
+      <li>An email sent to your recovery email address.</li>
+      <li>Enter the code or tap “Yes” when prompted.</li>
+    </ul>
+
+    <h3>3. If You Don’t Have Access to Your Recovery Info</h3>
+    <p>Click <strong>Try another way</strong> on the recovery page. Google will cycle through other options:</p>
+    <ul>
+      <li>Security questions (if you set them up long ago).</li>
+      <li>A code sent to another device you’ve logged into.</li>
+      <li>A waiting period where Google reviews your recovery request.</li>
+    </ul>
+
+    <h3>4. Set a New Password</h3>
+    <ul>
+      <li>Once you’ve verified yourself, Google will let you create a new password.</li>
+      <li>Pick something strong and unique (mix of letters, numbers, and symbols).</li>
+      <li>Don’t reuse the old password.</li>
+      <li>Click Save to finalize.</li>
+    </ul>
+
+    <h3>5. Update Your Devices</h3>
+    <ul>
+      <li>If you use Gmail on your phone, tablet, or mail client, update your saved password there too so you don’t get locked out.</li>
+    </ul>
+
+    <h3>6. Improve Your Account Security (Optional but Smart)</h3>
+    <ul>
+      <li>Add or update your recovery email and phone number.</li>
+      <li>Turn on 2-Step Verification in Google Account → Security.</li>
+      <li>Store your backup codes somewhere safe.</li>
+    </ul>
+
+    <h3>Final Thoughts</h3>
+    <p>Recovering a forgotten Gmail password mostly comes down to having recovery options set up. If you’ve lost access to all of them, you’ll have to go through Google’s longer identity verification process, but it’s still worth trying.</p>
+
+    <p><a href="../index.html">← Back to Home</a></p>
+  </article>
+</main>
+
+<footer>
+  <p>&copy; 2025 IYAOAA — All rights reserved.</p>
+</footer>
+
+<script>
+  // Auto-apply theme based on last saved choice
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
+
+<!-- Comment Section --> 
+<section class="comments">
+  <h3>Leave a Comment</h3>
+  <form name="comment" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="comment">
+    <p hidden>
+      <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+    </p>
+    <p>
+      <label>Name: <input type="text" name="name" required></label>
+    </p>
+    <p>
+      <label>Comment: <textarea name="message" required></textarea></label>
+    </p>
+    <p>
+      <button type="submit">Submit Comment</button>
+    </p>
+  </form>
+
+  <!-- Display Comments -->
+  <div id="comment-list">
+    <h4>Visitor Comments</h4>
+    <ul id="comments"></ul>
+  </div>
+</section>
+
+<script>
+// ===== Comment System (Per Post + Local Display + Netlify Save) =====
+const form = document.querySelector('form[name="comment"]');
+const commentsList = document.getElementById('comments');
+
+// Get unique key for each post (based on its filename)
+const postKey = `comments_${window.location.pathname.split('/').pop()}`;
+
+// Load saved comments for this post
+let comments = JSON.parse(localStorage.getItem(postKey)) || [];
+
+// Display existing comments
+window.addEventListener('DOMContentLoaded', displayComments);
+
+// Handle new comment submission
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = form.querySelector('input[name="name"]').value.trim();
+  const message = form.querySelector('textarea[name="message"]').value.trim();
+
+  if (!name || !message) return;
+
+  const newComment = {
+    id: Date.now(),
+    name,
+    message,
+    replies: []
+  };
+
+  // Save locally for this post only
+  comments.push(newComment);
+  localStorage.setItem(postKey, JSON.stringify(comments));
+
+  displayComments();
+
+  // Allow Netlify to process the form in background
+  form.submit();
+
+  form.reset();
+  alert("Comment submitted successfully!");
+});
+
+// Display comments + replies
+function displayComments() {
+  commentsList.innerHTML = '';
+
+  comments.forEach(comment => {
+    const li = document.createElement('li');
+    li.classList.add('comment-item');
+    li.innerHTML = `
+      <strong>${comment.name}</strong>: ${comment.message}
+      <button class="reply-btn" data-id="${comment.id}">Reply</button>
+      <ul class="replies">
+        ${comment.replies.map(r => `<li><em>${r.name}</em>: ${r.message}</li>`).join('')}
+      </ul>
+    `;
+    commentsList.appendChild(li);
+  });
+
+  // Reply buttons
+  document.querySelectorAll('.reply-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = e.target.getAttribute('data-id');
+      const replyName = prompt("Your name:");
+      const replyText = prompt("Your reply:");
+
+      if (replyName && replyText) {
+        const comment = comments.find(c => c.id == id);
+        comment.replies.push({ name: replyName, message: replyText });
+        localStorage.setItem(postKey, JSON.stringify(comments));
+        displayComments();
+      }
+    });
+  });
+}
+</script>
+
+</body>
+</html>

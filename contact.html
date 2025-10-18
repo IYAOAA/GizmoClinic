@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="favicon.png">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – IYAOAA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1 class="logo"><a href="index.html">IYAOAA</a></h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="contact.html" class="active">Contact</a> |
+    <a href="archive.html">Archive</a>
+  </nav>
+  <button onclick="toggleDarkMode()" class="dark-toggle">🌙 Dark/Light</button>
+  <hr>
+</header>
+
+<main class="contact-page">
+  <section class="contact-content">
+    <h2>Contact Me</h2>
+    <p>Got a question, tip, or feedback about the blog?  
+       Fill out the form below and I’ll get back to you.</p>
+
+    <form name="contact" method="POST" data-netlify="true" class="contact-form">
+  <input type="hidden" name="form-name" value="contact">
+
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="5" required></textarea>
+
+  <button type="submit">Send Message</button>
+</form>
+<div id="thankyou-popup" class="popup">
+  <div class="popup-content">
+    <p>Thanks for your message! We’ll be in touch soon.</p>
+    <button id="popup-ok">OK</button>
+  </div>
+</div>
+
+  </section>
+</main>
+
+<footer>
+  <hr>
+  <p>&copy; 2025 IYAOAA — All rights reserved.</p>
+</footer>
+<script>
+const form = document.querySelector('.contact-form');
+const popup = document.getElementById('thankyou-popup');
+const okBtn = document.getElementById('popup-ok');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(new FormData(form)).toString()
+  })
+  .then(() => {
+    popup.classList.add('show'); // fade in
+    // auto close after 5 seconds
+    setTimeout(() => {
+      popup.classList.remove('show'); // fade out
+      form.reset();
+    }, 5000);
+  })
+  .catch((error) => alert(error));
+});
+
+okBtn.addEventListener('click', function() {
+  popup.classList.remove('show'); // fade out instantly
+});
+</script>
+<script src="js/theme.js"></script>
+
+</body>
+</html>
